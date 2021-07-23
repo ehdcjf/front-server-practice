@@ -1,6 +1,6 @@
 import React,{useContext,useState} from 'react'
 import Store from './Store/context'
-import {createComment} from './api/api'
+import {createComment,postComment} from './api/api'
 
 
 const CommentForm = () => {
@@ -19,6 +19,7 @@ const CommentForm = () => {
             content:input,
         }
         createComment(dispatch,payload); 
+        // postComment(dispatch)
         
         setInput('')
     }

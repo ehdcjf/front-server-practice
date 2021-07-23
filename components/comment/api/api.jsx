@@ -5,7 +5,7 @@
 const getComment = async (dispatch) => {
   dispatch({ type: 'GET_COMMENT' })
   try {
-    const response = await fetch('http://3.138.34.208/api/comment')
+    const response = await fetch('http://3.21.50.229/api/comment')
     const data = await response.json()
 
     
@@ -18,7 +18,7 @@ const getComment = async (dispatch) => {
 const createComment = async (dispatch, payload) => {
 
   const { userid, content } = payload;
-  let url = 'http://3.138.34.208/api/comment'
+  let url = 'http://3.21.50.229/api/comment'
   let options = {
     method: 'POST',
     // mode:'cors',
@@ -34,12 +34,21 @@ const createComment = async (dispatch, payload) => {
 
     let data = await response.json();
     dispatch({ type: 'CREATE', payload: data })
-
 }
+
+
+
+
+
+
+
+
+
+
 
 const deleteComment = async (dispatch, payload) => {
   const { index, location } = payload;
-  let url = 'http://3.138.34.208/api/comment'
+  let url = 'http://3.21.50.229/api/comment'
   let options = {
     method: 'delete',
     mode: 'cors',
@@ -63,7 +72,7 @@ const deleteComment = async (dispatch, payload) => {
 
 const updateComment = async (dispatch, payload) => {
   const { index, location, content } = payload;
-  let url = 'http://3.138.34.208/api/comment'
+  let url = 'http://3.21.50.229/api/comment'
   let options = {
     method: 'PATCH',
     // mode:'no-cors',
@@ -98,10 +107,38 @@ const updateComment = async (dispatch, payload) => {
 
 
 
+
+
+const postComment = async (dispatch) => { 
+  dispatch({type:'POST_COMMENT'})
+  try{ 
+    const options = { 
+      method:'POST', 
+      headers:{ 
+        'Content-type' : 'application/json; charser=utf-8'
+      }, 
+      body:JSON.stringify({userid:'king',content:'aaa'})
+    }
+
+      const response = await fetch('http://3.138.34.208/api/comment')
+      const data = await response.json()
+
+    dispatch({type:'POST_COMMENT_SUCCESS',payload:data})
+  }catch(e){ 
+    dispatch({type:'POST_COMMENT_ERROR',payload:e})
+  }
+}
+
+
+
+
 module.exports = {
   getComment,
   createComment,
   deleteComment,
-  updateComment
+  updateComment,
+
+
+  postComment,
 
 }
