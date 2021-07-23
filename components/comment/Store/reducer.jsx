@@ -52,6 +52,7 @@ const reducer = (state,action) => {
             let index = action.payload.location;
             let {commentItem} = {...state}; 
             commentItem[index].content = newcontent; 
+            if(!commentItem[index].date.includes('수정됨'))
             commentItem[index].date += `(수정됨)`; 
             return {
                 ...state,
