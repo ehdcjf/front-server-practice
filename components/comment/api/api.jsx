@@ -109,25 +109,25 @@ const updateComment = async (dispatch, payload) => {
 
 
 
-const postComment = async (dispatch) => { 
-  dispatch({type:'POST_COMMENT'})
-  try{ 
-    const options = { 
-      method:'POST', 
-      headers:{ 
-        'Content-type' : 'application/json; charser=utf-8'
-      }, 
-      body:JSON.stringify({userid:'king',content:'aaa'})
-    }
+// const postComment = async (dispatch) => { 
+//   dispatch({type:'POST_COMMENT'})
+//   try{ 
+//     const options = { 
+//       method:'POST', 
+//       headers:{ 
+//         'Content-type' : 'application/json; charser=utf-8'
+//       }, 
+//       body:JSON.stringify({userid:'king',content:'aaa'})
+//     }
 
-      const response = await fetch('http://3.138.34.208/api/comment')
-      const data = await response.json()
+//       const response = await fetch('http://3.138.34.208/api/comment')
+//       const data = await response.json()
 
-    dispatch({type:'POST_COMMENT_SUCCESS',payload:data})
-  }catch(e){ 
-    dispatch({type:'POST_COMMENT_ERROR',payload:e})
-  }
-}
+//     dispatch({type:'POST_COMMENT_SUCCESS',payload:data})
+//   }catch(e){ 
+//     dispatch({type:'POST_COMMENT_ERROR',payload:e})
+//   }
+// }
 
 
 
@@ -139,6 +139,6 @@ module.exports = {
   updateComment,
 
 
-  postComment,
+  // postComment,
 
 }
